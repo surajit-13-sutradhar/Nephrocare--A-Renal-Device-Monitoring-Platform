@@ -9,6 +9,7 @@ const App = () => {
     return (
         <main>
             {/* defining the various routes of the application */}
+            <Navigation />
             <Routes>
                 {/* this path to landing page */}
                 <Route path="/" element={<LandingPage />} />

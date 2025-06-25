@@ -8,9 +8,9 @@ const Heading = () => {
             Real-time Renal Device Monitoring & Communication Platform
         </h1>
         {/* subheading */}
-        <h3 className="sm:text-xl md:text-2xl font-medium leading-1">
+        <p className="sm:text-xl md:text-2xl font-regular leading-1.6">
             Seamless connection between healthcare professionals and patients for efficient dialysis machine tracking and emergency responsiveness.
-        </h3>
+        </p>
         {/* CTA Buttons */}
         <div className="flex justify-center gap-4">
             <Button color="primary">Get Started <ArrowRight className="ml-2" /></Button>

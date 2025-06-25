@@ -1,13 +1,9 @@
 import {Form, Input, Button, Divider} from "@heroui/react";
-import { useState } from "react";
 
 const DoctorSignUpForm = () => {
-    const [action, setAction] = useState(null);
-
     return (
         <Form
         className="w-full max-w-xs flex flex-col gap-4 bg-gray-100/30 px-4 py-4 rounded-2xl shadow-lg shadow-gray-400 my-6"
-        onReset={() => setAction("reset")}
         onSubmit={(e) => {
             e.preventDefault();
             let data = Object.fromEntries(new FormData(e.currentTarget));
@@ -82,11 +78,6 @@ const DoctorSignUpForm = () => {
                 Sign Up with Google Auth
                 </Button>
             </div>
-            {/* {action && (
-                <div className="text-small text-default-500">
-                Action: <code>{action}</code>
-                </div>
-            )} */}
         </Form>
   )
 }
