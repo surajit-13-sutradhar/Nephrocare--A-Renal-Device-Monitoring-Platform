@@ -1,15 +1,19 @@
 import {Form, Input, Button, Divider} from "@heroui/react";
+import useUserTypeStore from "../store/useUserTypeStore";
 
 const DoctorSignUpForm = () => {
+    const setDoctorDataSubmittedSuccess = useUserTypeStore((state) => state.setDoctorDataSubmittedSuccess);
+
+    // Only called if all fields are valid due to built-in validation (or regex in the production)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setDoctorDataSubmittedSuccess();
+    };
+
     return (
         <Form
-        className="w-full max-w-xs flex flex-col gap-4 bg-gray-100/30 px-4 py-4 rounded-2xl shadow-lg shadow-gray-400 my-6"
-        onSubmit={(e) => {
-            e.preventDefault();
-            let data = Object.fromEntries(new FormData(e.currentTarget));
-
-            setAction(`submit ${JSON.stringify(data)}`);
-        }}
+            className="w-full max-w-xs flex flex-col gap-4 bg-gray-100/30 px-4 py-4 rounded-2xl shadow-lg shadow-gray-400 my-6"
+            onSubmit={handleSubmit}
         >
             <div className="flex flex-col justify-center items-center gap-1 mb-4">
                 <h2 className="text-large  font-bold">Sign Up</h2>
@@ -58,14 +62,14 @@ const DoctorSignUpForm = () => {
                 errorMessage="Please enter the Hospital you are currently posted at"
                 label="Hospital Address"
                 labelPlacement="outside"
-                name="medical Id."
+                name="hospital"
                 placeholder="Enter Hospital Name"
                 type="text"
             />
             <div className="w-full flex flex-col justify-center items-center text-center gap-2">
                 {/* Otp verification button */}
                 <Button color="primary" type="submit" className="mx-auto mt-4 w-full">
-                Proceed to OTP Verification
+                    Proceed to OTP Verification
                 </Button>
                 {/* Divider between OTP Verification and Google AUTH button */}
                 <div className="flex justify-center items-center">
@@ -75,11 +79,11 @@ const DoctorSignUpForm = () => {
                 </div>
                 {/* Google AUTH Button */}
                 <Button color="secondary" variant="bordered" className="mx-auto w-full">
-                Sign Up with Google Auth
+                    Sign Up with Google Auth
                 </Button>
             </div>
         </Form>
-  )
-}
+    );
+};
 
-export default DoctorSignUpForm
+export default DoctorSignUpForm;

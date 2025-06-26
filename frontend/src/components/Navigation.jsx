@@ -57,7 +57,7 @@ const Navigation = () => {
                     </Link>
                 </NavbarItem>
                 <NavbarItem isActive>
-                    <Link aria-current="page" href="#">
+                    <Link aria-current="page" href="/">
                         Home
                     </Link>
                 </NavbarItem>

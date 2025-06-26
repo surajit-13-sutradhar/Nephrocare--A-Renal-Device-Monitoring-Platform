@@ -1,13 +1,17 @@
 import {Form, Button, InputOtp} from "@heroui/react";
 import { useState } from "react";
+import useUserTypeStore from "../store/useUserTypeStore";
 
 const OTPVerification = () => {
     const [value, setValue] = useState();
     const [message, setMessage] = useState("");
-    const [isVerified, setIsVerified] = useState(false); // to store the state of correct otp entered or not
-    const [showResend, setShowResend] = useState(false);
+    const [isVerified, setIsVerified] = useState(false); // to store the state of correct otp entered or not-- local state
+    const [showResend, setShowResend] = useState(false); // to determine whether to show resend button or not
     // i am setting a default OTP value for visual testing purposes. remove this part while working on production
     let otp = "123456";
+
+    // Global state of OTP Verification
+    const setDoctorOTPVerified = useUserTypeStore((state) => state.setDoctorOTPVerified);
 
     // a dummy function for otp verification
     const handleSubmit = (e) => {
@@ -18,10 +22,16 @@ const OTPVerification = () => {
             setIsVerified(false);
             setShowResend(true);
         } else {
+            // i am verifying the otp using a local value of otp. but you'll need to assign some asynchronity to verify with your provider if the otp is actually verified or not before changing the global state
             setMessage("OTP verified! proceed to password creation.");
             setIsVerified(true);
             setShowResend(false);
         }
+    }
+
+    // Function to set otp verification state global variable
+    const handleGlobalSubmit = () => {
+        setDoctorOTPVerified(true);
     }
 
     return (
@@ -50,9 +60,18 @@ const OTPVerification = () => {
                 </p>
             )}
             {/*  */}
-            <Button color="primary" type="submit" className="mx-auto w-full" onClick={handleSubmit}>
-                {isVerified ? "Set Password" : "Verify OTP"}
-            </Button>
+            {!isVerified && 
+                <Button color="primary" type="submit" className="mx-auto w-full" onClick={handleSubmit}>
+                    Verify OTP
+                </Button>
+            }
+            
+            {isVerified && 
+                <Button color="primary" type="submit" className="mx-auto w-full" onClick={handleGlobalSubmit}>
+                    Set Password
+                </Button>
+            }
+            
             {/* resend otp button only to be shown only when there is attempt to submit an incorrect OTP */}
             {showResend && (
                 <Button color="secondary" variant="flat" className="mx-auto w-full">
