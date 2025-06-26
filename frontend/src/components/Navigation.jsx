@@ -8,6 +8,7 @@ import { Stethoscope, Thermometer } from "lucide-react";
 import useUserTypeStore from "../store/useUserTypeStore";
 import {useNavigate} from "react-router";
 
+// check if doctor is authenticated
 
 
 const Navigation = () => {
@@ -76,7 +77,7 @@ const Navigation = () => {
                 <NavbarItem>
                     <Popover placement="bottom-start">
                         <PopoverTrigger>
-                            <Button as={Link} color="primary" href="#" variant="flat" className="font-semibold">Sign Up</Button>
+                            <Button as={Link} color="primary" variant="flat" className="font-semibold">Sign Up</Button>
                         </PopoverTrigger>
                         <PopoverContent className="rounded-t-small">
                             <div className="px-1 py-1">

@@ -32,7 +32,7 @@ const useUserTypeStore = create(
             name: "user-type-storage", // unique name in localStorage
             // Optionally, you can whitelist/blacklist state keys, or use sessionStorage
         }
-        )
-  );
+    )
+);
 
 export default useUserTypeStore
