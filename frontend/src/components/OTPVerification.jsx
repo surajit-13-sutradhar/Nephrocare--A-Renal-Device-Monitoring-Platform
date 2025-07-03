@@ -4,9 +4,10 @@ import useUserTypeStore from "../store/useUserTypeStore";
 
 const OTPVerification = () => {
     const [value, setValue] = useState();
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState(""); // stores the message that needs to be displayed to the user
     const [isVerified, setIsVerified] = useState(false); // to store the state of correct otp entered or not-- local state
     const [showResend, setShowResend] = useState(false); // to determine whether to show resend button or not
+    
     // i am setting a default OTP value for visual testing purposes. remove this part while working on production
     let otp = "123456";
 

@@ -1,5 +1,5 @@
 import {Form, Input, Button, Divider} from "@heroui/react";
-import useUserTypeStore from "../store/useUserTypeStore";
+import useUserTypeStore from "../../store/useUserTypeStore";
 
 const DoctorSignUpForm = () => {
     const setDoctorDataSubmittedSuccess = useUserTypeStore((state) => state.setDoctorDataSubmittedSuccess);
@@ -7,13 +7,19 @@ const DoctorSignUpForm = () => {
     // Only called if all fields are valid due to built-in validation (or regex in the production)
     const handleSubmit = (e) => {
         e.preventDefault();
-        setDoctorDataSubmittedSuccess();
+        if (e.currentTarget.checkValidity()) {
+            setDoctorDataSubmittedSuccess();
+        } else {
+            // If invalid, let the browser show validation errors
+            e.stopPropagation();
+        }
     };
 
     return (
         <Form
             className="w-full max-w-xs flex flex-col gap-4 bg-gray-100/30 px-4 py-4 rounded-2xl shadow-lg shadow-gray-400 my-6"
             onSubmit={handleSubmit}
+            validationBehavior="aria"
         >
             <div className="flex flex-col justify-center items-center gap-1 mb-4">
                 <h2 className="text-large  font-bold">Sign Up</h2>
@@ -28,6 +34,11 @@ const DoctorSignUpForm = () => {
                 name="username"
                 placeholder="Full Name"
                 type="text"
+                validate={(value) => {
+                    if (value.length < 4) {
+                        return "Username must be alteast 3 characters long";
+                    }
+                }}
             />
 
             <Input

@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage"
 import SignUpPage from "./pages/SignUpPage"
 import { Routes } from "react-router"
 import { Route } from "react-router"
+import LoginPage from "./pages/LoginPage"
 
 const App = () => {
 
@@ -15,7 +16,9 @@ const App = () => {
                 {/* this path to landing page */}
                 <Route path="/" element={<LandingPage />} />
                 {/* this path will lead to sign up page */}
-                <Route path="/auth" element={<SignUpPage />} />
+                <Route path="/sign-up" element={<SignUpPage />} />
+                {/* login page */}
+                <Route path="/log-in" element={<LoginPage />} />
                 {/* Doctor Dashboard page */}
                 <Route path="/doctor-dashboard" element={<DoctorDashboardPage />} />
             </Routes>
