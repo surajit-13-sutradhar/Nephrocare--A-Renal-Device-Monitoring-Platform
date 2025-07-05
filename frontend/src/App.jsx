@@ -1,5 +1,6 @@
 import Navigation from "./components/Navigation"
 import DoctorDashboardPage from "./pages/DoctorDashboardPage"
+import PatientDashboard from "./pages/PatientDashboard"
 import LandingPage from "./pages/LandingPage"
 import SignUpPage from "./pages/SignUpPage"
 import { Routes } from "react-router"
@@ -21,6 +22,8 @@ const App = () => {
                 <Route path="/log-in" element={<LoginPage />} />
                 {/* Doctor Dashboard page */}
                 <Route path="/doctor-dashboard" element={<DoctorDashboardPage />} />
+                {/* Patient Dashboard page */}
+                <Route path="/patient-dashboard" element={<PatientDashboard />} />
             </Routes>
         </main>
     )

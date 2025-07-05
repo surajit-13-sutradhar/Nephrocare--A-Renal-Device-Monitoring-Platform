@@ -106,11 +106,6 @@ const PasswordSetting = () => {
             <Button color="primary" type="submit" className="mx-auto mt-4 w-full" isDisabled={isButtonDisabled}>
                 Finish Sign-Up
             </Button>
-            {/* {submitted && (
-                <div className="text-small text-default-500">
-                You submitted: <code>{JSON.stringify(submitted)}</code>
-                </div>
-            )} */}
         </Form>
     )
 }
