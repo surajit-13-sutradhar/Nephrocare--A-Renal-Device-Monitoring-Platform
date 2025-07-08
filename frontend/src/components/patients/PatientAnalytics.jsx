@@ -5,8 +5,6 @@ import {
   Droplet,
   Activity,
   AlertTriangle,
-  ArrowDownRight,
-  ArrowUpRight,
 } from "lucide-react";
 
 // Thresholds for conditional highlighting
@@ -30,7 +28,7 @@ const PATIENT_DATA = [
 },
 {
     name: "Temperature",
-    value: "100.2 °F",
+    value: "100.2 °C",
     numeric: 100.2,
     icon: Thermometer,
     thresholds: THRESHOLDS.temperature,

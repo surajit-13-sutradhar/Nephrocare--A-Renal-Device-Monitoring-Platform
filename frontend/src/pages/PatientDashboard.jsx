@@ -77,7 +77,7 @@ const PatientDashboard = () => {
             <AnimatePresence>
                 {bookingOpen && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-                        <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 w-full max-w-md relative animate-fadeIn">
+                        <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 w-full max-w-md relative animate-fadeIn flex flex-col items-center">
                             <button
                                 className="absolute top-4 right-4 p-1 rounded hover:bg-gray-100"
                                 onClick={() => setBookingOpen(false)}
@@ -92,11 +92,10 @@ const PatientDashboard = () => {
                                     aria-label="Select booking date"
                                     value={selectedBookingDate}
                                     onChange={setSelectedBookingDate}
-                                    className="w-full"
                                 />
                             </div>
                             <div className="flex gap-3 justify-end">
-                                <Button variant="outline" onClick={() => setBookingOpen(false)}>
+                                <Button color="danger" onClick={() => setBookingOpen(false)}>
                                     Cancel
                                 </Button>
                                 <Button color="primary" onClick={handleBook} disabled={bookingSuccess}>
