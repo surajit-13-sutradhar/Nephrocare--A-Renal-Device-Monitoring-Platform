@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { UserIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { Button } from "@heroui/button";
 
 const doctorProfile = {
     name: "Dr. Anita Sharma",
@@ -37,11 +38,11 @@ const ChatSidebar = ({ open, onClose }) => {
 
     return (
         <motion.div
-        className={`fixed top-0 right-0 h-full z-30 bg-white shadow-lg flex flex-col w-80 max-w-full transition-all duration-300 ease-in-out ${open ? "translate-x-0" : "translate-x-full"} md:relative md:translate-x-0 md:w-80 md:max-w-xs rounded-2xl md:ml-4`}
+        className={`fixed right-2 z-30 bg-white shadow-lg flex flex-col w-80 max-w-full transition-all duration-300 ease-in-out ${open ? "translate-x-0" : "translate-x-full"} md:ml-4 rounded-2xl max-h-[90vh] top-8 md:top-24 h-auto md:h-[calc(100vh-7rem)]`}
         style={{ minWidth: open ? "20rem" : 0 }}
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 1, x: 400 }}
+        exit={{ opacity: 0, x: 40 }}
         transition={{ duration: 0.5 }}
         >
         {/* Header */}

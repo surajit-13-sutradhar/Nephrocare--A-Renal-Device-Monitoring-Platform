@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 const PatientProfile = () => {
     return (
         <motion.div 
-            className="w-full bg-blue-100 bg-opacity-50 backdrop-blur-md rounded-xl p-6 flex flex-col lg:flex-row gap-6 shadow-lg shadow-blue-900/10"
+            className="w-full bg-white rounded-xl p-6 flex flex-col lg:flex-row gap-6 shadow-lg border border-gray-200"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
         
         {/* Left Side: Image + Basic Info */}
-        <div className="flex-shrink-0 w-full lg:w-1/4 flex items-center justify-center bg-gray-700 rounded-lg h-60">
+        <div className="flex-shrink-0 w-full lg:w-1/4 flex items-center justify-center bg-gray-100 rounded-lg h-60">
             {/* Patient image placeholder */}
             <span className="text-gray-400 text-sm">Patient Image</span>
         </div>
 
         {/* Right Side: Detailed Info */}
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-blue-800">
+        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-gray-800">
             
             <div>
             <p className="text-sm text-gray-400">Full Name</p>

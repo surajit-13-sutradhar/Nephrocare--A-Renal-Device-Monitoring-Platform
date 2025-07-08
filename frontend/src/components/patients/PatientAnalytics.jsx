@@ -25,6 +25,8 @@ const PATIENT_DATA = [
     icon: HeartPulse,
     thresholds: THRESHOLDS.heartRate,
     unit: "bpm",
+    iconBg: "bg-blue-100",
+    iconColor: "text-blue-600",
 },
 {
     name: "Temperature",
@@ -33,6 +35,8 @@ const PATIENT_DATA = [
     icon: Thermometer,
     thresholds: THRESHOLDS.temperature,
     unit: "°F",
+    iconBg: "bg-orange-100",
+    iconColor: "text-orange-600",
 },
 {
     name: "Blood Pressure (Sys.)",
@@ -41,6 +45,8 @@ const PATIENT_DATA = [
     icon: Activity,
     thresholds: THRESHOLDS.bloodPressure,
     unit: "mmHg",
+    iconBg: "bg-green-100",
+    iconColor: "text-green-600",
 },
 {
     name: "Oxygen Saturation",
@@ -50,6 +56,8 @@ const PATIENT_DATA = [
     thresholds: THRESHOLDS.oxygenSaturation,
     reverse: true,
     unit: "%",
+    iconBg: "bg-violet-100",
+    iconColor: "text-violet-600",
 },
 ];
 
@@ -73,35 +81,26 @@ const PatientAnalytics = () => {
             item.thresholds,
             item.reverse
             );
-            
-            // Alternating blue and violet background colors
-            const bgColors = [
-                "bg-blue-900 bg-opacity-50 border-blue-700",
-                "bg-violet-900 bg-opacity-50 border-violet-700", 
-                "bg-blue-800 bg-opacity-50 border-blue-600",
-                "bg-violet-800 bg-opacity-50 border-violet-600"
-            ];
-            const bgColor = bgColors[index % bgColors.length];
 
             return (
             <motion.div
                 key={item.name}
-                className={`${bgColor} backdrop-filter backdrop-blur-lg shadow-lg shadow-${bgColor}-500 rounded-xl p-6 `}
+                className={"bg-white rounded-xl shadow-lg border border-gray-200 p-6"}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
             >
                 <div className="flex items-center justify-between">
                 <div>
-                    <h3 className="text-sm font-medium text-gray-100">
+                    <h3 className="text-sm font-medium text-gray-800">
                     {item.name}
                     </h3>
-                    <p className="mt-1 text-2xl font-bold text-gray-100">
+                    <p className="mt-1 text-2xl font-bold text-gray-900">
                     {item.value}
                     </p>
                 </div>
-                <div className="p-3 rounded-full bg-opacity-20 bg-gray-600">
-                    <item.icon className="size-6 text-gray-200" />
+                <div className={`p-3 rounded-full ${item.iconBg}`}>
+                    <item.icon className={`size-6 ${item.iconColor}`} />
                 </div>
                 </div>
 
