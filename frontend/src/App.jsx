@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage"
 import { Routes } from "react-router"
 import { Route } from "react-router"
 import LoginPage from "./pages/LoginPage"
+import DeviceDetailPage from "./pages/DeviceDetailPage"
 
 const App = () => {
 
@@ -24,6 +25,8 @@ const App = () => {
                 <Route path="/doctor-dashboard" element={<DoctorDashboardPage />} />
                 {/* Patient Dashboard page */}
                 <Route path="/patient-dashboard" element={<PatientDashboard />} />
+                {/* Device Detail page */}
+                <Route path="/device/:deviceId" element={<DeviceDetailPage />} />
             </Routes>
         </main>
     )
