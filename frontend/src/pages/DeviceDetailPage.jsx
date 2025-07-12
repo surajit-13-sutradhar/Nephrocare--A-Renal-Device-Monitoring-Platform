@@ -54,7 +54,7 @@ const DeviceDetailPage = () => {
     const getInitialMessages = () => chatHistories[chatTarget.id] || [];
 
     return (
-        <div className="w-full min-h-screen bg-gray-50 py-10 px-4 lg:px-8 flex flex-col items-center">
+        <div className="w-full min-h-screen py-10 px-4 lg:px-8 flex flex-col items-center">
         <div className="w-full mx-auto">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
                 <div>

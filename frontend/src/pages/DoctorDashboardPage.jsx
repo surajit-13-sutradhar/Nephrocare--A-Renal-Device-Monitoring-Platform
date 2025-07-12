@@ -29,7 +29,7 @@ const DoctorDashboardPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="w-full min-h-screen bg-gray-50 py-10 px-2 sm:px-4">
+        <div className="w-full min-h-screen py-10 px-2 sm:px-4">
             <div className="w-full max-w-6xl mx-auto">
                 <h1 className="text-3xl font-bold text-blue-500 mb-8">Your Devices</h1>
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
