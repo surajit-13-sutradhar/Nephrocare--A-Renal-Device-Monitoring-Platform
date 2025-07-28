@@ -55,91 +55,91 @@ const DeviceDetailPage = () => {
 
     return (
         <div className="w-full min-h-screen py-10 px-4 lg:px-8 flex flex-col items-center">
-        <div className="w-full mx-auto">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
-                <div>
-                    <h1 className="text-2xl font-bold text-blue-400 mb-1">Device: {deviceId}</h1>
-                    <div className="text-gray-600 text-sm">Currently Hooked Patient:</div>
-                    <Popover open={patientPopoverOpen} onOpenChange={setPatientPopoverOpen}>
+            <div className="w-full mx-auto">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+                    <div>
+                        <h1 className="text-2xl font-bold text-blue-400 mb-1">Device: {deviceId}</h1>
+                        <div className="text-gray-600 text-sm">Currently Hooked Patient:</div>
+                        <Popover open={patientPopoverOpen} onOpenChange={setPatientPopoverOpen}>
+                        <PopoverTrigger asChild>
+                            <Button variant="outline" className="mt-2 flex items-center gap-2">
+                            {selectedPatient.name}
+                            <ChevronDown className="w-4 h-4" />
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="p-0">
+                            <div className="flex flex-col">
+                            {mockPatients.map((p) => (
+                                <button
+                                key={p.id}
+                                className={`px-4 py-2 text-left hover:bg-gray-100 ${selectedPatient.id === p.id ? 'bg-gray-100 font-semibold' : ''}`}
+                                onClick={() => { setSelectedPatient(p); setPatientPopoverOpen(false); }}
+                                >
+                                {p.name}
+                                </button>
+                            ))}
+                            </div>
+                        </PopoverContent>
+                        </Popover>
+                    </div>
+                </div>
+                {/* Patient Info and Analytics */}
+                <div className="mb-6">
+                    <PatientAnalytics />
+                    <PatientProfile />
+                </div>
+                    {/* Dialysis Monitoring Section */}
+                <div className="mb-8">
+                    <h2 className="text-2xl font-bold text-blue-800 my-6">Dialysis Monitoring</h2>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <DialysisDetailCard />
+                        <DialysisDetailGraph />
+                    </div>
+                </div>
+            </div>
+            {/* Chat Sidebar */}
+            <div>
+                {chatOpen && (
+                <ChatSidebar
+                    open={chatOpen}
+                    onClose={() => setChatOpen(false)}
+                    initialMessages={getInitialMessages()}
+                    chatTarget={chatTarget.label}
+                />
+                )}
+            </div>
+            {/* Floating Chat Toggle Button */}
+            {!chatOpen && (
+                <Popover open={showChatTargetPopover} onOpenChange={setShowChatTargetPopover}>
                     <PopoverTrigger asChild>
-                        <Button variant="outline" className="mt-2 flex items-center gap-2">
-                        {selectedPatient.name}
-                        <ChevronDown className="w-4 h-4" />
+                        <Button
+                        className="fixed bottom-6 right-6 z-40 text-white shadow-lg p-4 flex items-center gap-2 transition md:bottom-8 md:right-8"
+                        color="primary"
+                        aria-label="Open chat sidebar"
+                        >
+                            <MessageSquareTextIcon className="w-4 h-4" />
+                            <span className="hidden sm:inline text-sm font-medium">Chat</span>
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent className="p-0">
                         <div className="flex flex-col">
-                        {mockPatients.map((p) => (
+                        {chatTargets.map((target) => (
                             <button
-                            key={p.id}
-                            className={`px-4 py-2 text-left hover:bg-gray-100 ${selectedPatient.id === p.id ? 'bg-gray-100 font-semibold' : ''}`}
-                            onClick={() => { setSelectedPatient(p); setPatientPopoverOpen(false); }}
+                            key={target.id}
+                            className={`px-4 py-2 text-left hover:bg-gray-100 ${chatTarget.id === target.id ? 'bg-gray-100 font-semibold' : ''}`}
+                            onClick={() => {
+                                setChatTarget(target);
+                                setShowChatTargetPopover(false);
+                                setChatOpen(true);
+                            }}
                             >
-                            {p.name}
+                            {target.label}
                             </button>
                         ))}
                         </div>
                     </PopoverContent>
-                    </Popover>
-                </div>
-            </div>
-            {/* Patient Info and Analytics */}
-            <div className="mb-6">
-                <PatientAnalytics />
-                <PatientProfile />
-            </div>
-                {/* Dialysis Monitoring Section */}
-            <div className="mb-8">
-                <h2 className="text-2xl font-bold text-blue-800 my-6">Dialysis Monitoring</h2>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <DialysisDetailCard />
-                    <DialysisDetailGraph />
-                </div>
-            </div>
-        </div>
-        {/* Chat Sidebar */}
-        <div>
-            {chatOpen && (
-            <ChatSidebar
-                open={chatOpen}
-                onClose={() => setChatOpen(false)}
-                initialMessages={getInitialMessages()}
-                chatTarget={chatTarget.label}
-            />
+                </Popover>
             )}
-        </div>
-        {/* Floating Chat Toggle Button */}
-        {!chatOpen && (
-            <Popover open={showChatTargetPopover} onOpenChange={setShowChatTargetPopover}>
-                <PopoverTrigger asChild>
-                    <Button
-                    className="fixed bottom-6 right-6 z-40 text-white shadow-lg p-4 flex items-center gap-2 transition md:bottom-8 md:right-8"
-                    color="primary"
-                    aria-label="Open chat sidebar"
-                    >
-                    <MessageSquareTextIcon className="w-4 h-4" />
-                    <span className="hidden sm:inline text-sm font-medium">Chat</span>
-                    </Button>
-                </PopoverTrigger>
-                <PopoverContent className="p-0">
-                    <div className="flex flex-col">
-                    {chatTargets.map((target) => (
-                        <button
-                        key={target.id}
-                        className={`px-4 py-2 text-left hover:bg-gray-100 ${chatTarget.id === target.id ? 'bg-gray-100 font-semibold' : ''}`}
-                        onClick={() => {
-                            setChatTarget(target);
-                            setShowChatTargetPopover(false);
-                            setChatOpen(true);
-                        }}
-                        >
-                        {target.label}
-                        </button>
-                    ))}
-                    </div>
-                </PopoverContent>
-            </Popover>
-        )}
         </div>
     );
 };
